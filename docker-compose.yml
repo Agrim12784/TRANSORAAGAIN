@@ -1,0 +1,18 @@
+services:
+  backend:
+    build:
+      context: ./transora-backend/transora-backend
+    container_name: transora-backend
+    env_file:
+      - ./transora-backend/transora-backend/.env
+    ports:
+      - "5000:5000"
+
+  frontend:
+    build:
+      context: ./frntend
+    container_name: transora-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
